@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
   submitted :Boolean= false;
   returnUrl: String;
 
-  color = 'primary';
-  diameter = 20;
-  width = 20;
+  color = 'warn'
+  diameter = 30;
+  width = 5;
   hide = true;
 
   constructor(

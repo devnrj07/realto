@@ -22,9 +22,10 @@ export class RegisterComponent implements OnInit {
   countries = Countries;
   hide = true;
 
-  color = 'primary';
-  diameter = 20;
-  width = 20;
+  color = 'warn'
+  diameter = 30;
+  width = 5;
+  
 
   maxDate: Date;
   minDate: Date;

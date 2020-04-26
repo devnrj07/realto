@@ -15,9 +15,11 @@ export class UserListComponent implements OnInit {
   currentUser;
   users = [];
   loading = false;
-  color = 'primary';
-  diameter = 20;
-  width = 20;
+  color = 'warn'
+  diameter = 30;
+  width = 5;
+  
+
   constructor(
     private router: Router,
     private authenticationService: UserAuthenticationService,
@@ -44,6 +46,7 @@ export class UserListComponent implements OnInit {
       }, error => {
         console.error(error);
         this.loading = false;
+        this.notification.alert('failed to load user list')
       });
   }
 

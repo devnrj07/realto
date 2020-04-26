@@ -66,11 +66,11 @@ export class AutoLogoutService {
     this.ngZone.run(() => {
       let urlInfo=this.router.url;
       if (!this.authService.currentUserValue) {
-                
+            
       }
       else if (isTimedOut) {
         console.log('User logged out');
-        this.router.navigateByUrl('/login');
+        this.router.navigate(['login']);
 
       }
       this.authService.logout();
