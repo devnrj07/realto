@@ -1,0 +1,152 @@
+<mat-toolbar color="primary">Realto</mat-toolbar>
+
+<mat-card>
+    <mat-card-title color="primary">Register
+
+        <span *ngIf="loading">
+            <mat-spinner class="spinner" [color]="color" [diameter]="diameter" [strokeWidth]="width">
+            </mat-spinner>
+        </span>
+    </mat-card-title>
+    <div class="form-container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput placeholder="Enter your name" formControlName="name" required>
+                    <mat-icon matPrefix>perm_identity</mat-icon>
+                    <mat-error *ngIf="fc.name.errors?.minLength && !fc.name.errors?.required">
+                        Name should be atleast 4 characters
+                    </mat-error>
+                    <mat-error *ngIf="fc.name.errors?.required">
+                        Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-icon matPrefix>calendar_today</mat-icon>
+                    <input matInput [matDatepicker]="dateOfBirth" name="dob" formControlName="dob" [min]="minDate"
+                        [max]="maxDate" placeholder="Date of Birth">
+                    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+                    <mat-datepicker #dateOfBirth></mat-datepicker>
+                    <mat-error *ngIf="fc.dob.errors?.required">Date of birth is required</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-icon matPrefix>public </mat-icon>
+                    <mat-label>Select Country</mat-label>
+                    <mat-select name="country" formControlName="country">
+                        <mat-option [value]="">Select Country</mat-option>
+                        <mat-option *ngFor="let country of countries" [value]="country">
+                            {{country}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="fc.country.errors?.required">{{required}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>face</mat-icon>
+                    <input url matInput placeholder="Enter url to avator" formControlName="avatar">
+                    <mat-error *ngIf="fc.avatar.errors?.required">
+                        Avator is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <input matInput placeholder="Enter your email" formControlName="email">
+                    <mat-icon matPrefix>email</mat-icon>
+                    <mat-error *ngIf="fc.email.errors?.email && !fc.email.errors?.required">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="fc.email.errors?.required">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <input matInput placeholder="Enter your password" formControlName="password"
+                        [type]="hide ? 'password' : 'text'">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="fc.password.errors?.minLength && !fc.password.errors?.required">
+                        Password should contain atleast 8 characters
+                    </mat-error>
+                    <mat-error *ngIf="fc.password.errors?.required">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button [disabled]="!registerForm.valid" mat-raised-button color="primary" class="btn btn-register">
+                    Signup
+                </button>
+                <button mat-raised-button  (click)="reset()" class="btn btn-reset">
+                    Reset
+                </button>
+            </mat-card-actions>
+    
+    </form>
+</div>
+</mat-card>
+
+<!--
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.name.errors }" />
+        <div *ngIf="submitted && fc.name.errors" class="invalid-feedback">
+            <div *ngIf="fc.name.errors.required">Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.email.errors }" />
+        <div *ngIf="submitted && fc.email.errors" class="invalid-feedback">
+            <div *ngIf="fc.email.errors.required">Email is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.dob.errors }" />
+        <div *ngIf="submitted && fc.dob.errors" class="invalid-feedback">
+            <div *ngIf="fc.dob.errors.required">Date of birth is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" formControlName="country">
+            <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
+        </select>
+        <div *ngIf="submitted && fc.country.errors" class="invalid-feedback">
+            <div *ngIf="fc.country.errors.required">Country is required</div>
+        </div>
+    </div>
+
+   <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <input type="url" formControlName="avatar" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.avatar.errors }" />
+        <div *ngIf="submitted && fc.avatar.errors" class="invalid-feedback">
+            <div *ngIf="fc.avatar.errors.required">Avator is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.password.errors }" />
+        <div *ngIf="submitted && fc.password.errors" class="invalid-feedback">
+            <div *ngIf="fc.password.errors.required">Password is required</div>
+            <div *ngIf="fc.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="!registerForm.valid" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+-->

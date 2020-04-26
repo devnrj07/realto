@@ -1,0 +1,25 @@
+.mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: .1rem .1rem .5rem #333;
+}
+.mat-card{
+    margin: 10rem auto;
+    min-width:20rem;
+    max-width:30rem;
+    box-shadow: 2rem 2rem 4rem #333;
+  }
+
+.mat-card-title{
+  color: white;
+  background-color:rgb(116, 9, 238);
+  text-align: center;
+}
+
+.mat-icon{
+  margin-right: 1.6rem;
+}   
+.mat-card-actions{
+  display: flex;
+  justify-content: space-evenly;
+}   

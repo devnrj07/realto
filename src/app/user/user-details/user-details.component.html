@@ -1,0 +1,32 @@
+<mat-card class="card">
+    <mat-card-header>
+      <img src ="avatar" mat-card-avatar class="header-image" alt="avatar">
+      <mat-card-title>{{name | uppercase}},</mat-card-title>
+      <mat-card-subtitle>{{dob|getAge}}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <mat-card-subtitle> <mat-icon>mail_outline</mat-icon> {{email}}</mat-card-subtitle>
+        <mat-card-subtitle> <mat-icon>language</mat-icon>  {{country}}</mat-card-subtitle>
+        
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-fab (click)="openModal()" color="primary"><mat-icon>edit</mat-icon></button>
+        <button mat-fab (click)="display()" color="warn"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+  </mat-card>
+  
+
+
+
+<!-- <div class="card">
+    <div class="avatar">
+        <img  src="avatar" alt="avatar" class="user-avatar">
+    </div>
+    <div class="user-details">
+        <div class="user-name">{{name | uppercase}}</div>
+        <div class="user-age">{{dob|getAge}}</div>
+     </div>
+    <div class="user-email">{{email | lowercase}}</div>
+    <button class="btn" (click)="openModal()">Edit</button>
+</div> -->

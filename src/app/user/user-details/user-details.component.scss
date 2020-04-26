@@ -1,0 +1,69 @@
+@import '../../common/styles/base.scss';
+.card{
+    
+    width: 30rem;
+    background-color: $color-secondary;
+    display: flex;
+    box-shadow: .5rem .5rem .3rem .1rem #414040;
+} 
+
+.mat-icon{
+  vertical-align: middle;
+  position: relative;
+  top: -1px;    
+}
+
+.mat-card-actions{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* .card:hover .user-avatar{
+    height:20rem;
+}
+.card:hover .user-details{
+    height:10rem;
+}
+.user-avatar{
+    margin-left: .15rem;
+    margin-top: .1rem;
+    height: 26rem;
+    width: 24.5rem;
+    transition: height .5s ease-out;
+}
+.user-details{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: center;
+    height:5rem;
+    width:25rem;
+    font-size: 1.6rem;
+    font-family: $font-primary;
+    font-weight: 700;
+    transition: height .5s ease-out;
+}
+.user-name{
+    
+}
+
+.user-age{
+
+}
+
+.user-email{
+    align-self: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: $font-primary;
+}
+
+.btn{
+    display: none;
+    font-size: 2rem;
+    transition: all .5s ease-in;
+}
+
+.card:hover .btn{
+    display: block;
+} */

@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+    <span> Realto </span>
+
+    <span *ngIf="loading">
+        <mat-spinner class="spinner" [color]="color" [diameter]="diameter" [strokeWidth]="width">
+        </mat-spinner>
+    </span>
+
+    <button mat-raised-button color="warn" (click)="exit()">
+        Logout
+    </button>
+</mat-toolbar>
+
+<div class="container">
+<h1>Hi {{currentUser}}!</h1>
+
+<h3>All registered users:</h3>
+<div class="cards-container">
+    <div *ngFor="let user of users" class="cards">
+        <app-user-details  [name]="user.name" 
+        [dob]="user.dob" 
+        [email]="user.email" 
+        [avatar]="user.avatar"
+        [country]="user.country"
+        
+        ></app-user-details>
+    </div> 
+</div>
+
+
+<!-- <ul>
+    <li *ngFor="let user of users">
+       <app-user-details [name]="user.name" [dob]="user.dob" [email]="user.email" [avatar]="user.avatar"></app-user-details>
+    </li>
+</ul>
+ --></div>
+

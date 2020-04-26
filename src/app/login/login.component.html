@@ -1,0 +1,83 @@
+<mat-toolbar color="primary">
+    <span>Realto</span>
+    <span *ngIf="loading">
+        <mat-spinner class="spinner" [color]="color" [diameter]="diameter" [strokeWidth]="width">
+        </mat-spinner>
+    </span>
+</mat-toolbar>
+<mat-card>
+    <div class="form-container">
+    <mat-card-title >
+         Login 
+    </mat-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+           
+                <mat-form-field>
+                    <input matInput placeholder="Enter your email" formControlName="email" required>
+                    <mat-icon matPrefix>email</mat-icon>
+
+                    <mat-error *ngIf="fc.email.errors?.email && !fc.email.errors?.required">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="fc.email.errors?.required">
+                        Email is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <input matInput placeholder="Enter your password" formControlName="password"
+                        [type]="hide ? 'password' : 'text'">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="fc.password.errors?.minLength && !fc.password.errors?.required">
+                        Password should contain atleast 8 characters
+                    </mat-error>
+                    <mat-error *ngIf="fc.password.errors?.required">
+                        Password is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+            
+
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button [disabled]="!loginForm.valid" mat-raised-button color="primary" class="btn btn-login">
+                Login
+            </button>
+            <a mat-raised-button routerLink="/register" class="btn btn-link">Register</a>
+        </mat-card-actions>
+    </form>
+</div>
+</mat-card>
+
+
+
+<!--
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.email.errors }" />
+        <div *ngIf="submitted && fc.email.errors" class="invalid-feedback">
+            <div *ngIf="fc.email.errors.required">Email is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fc.password.errors }" />
+        <div *ngIf="submitted && fc.password.errors" class="invalid-feedback">
+            <div *ngIf="fc.password.errors.required">Password is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="!loginForm.valid" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        <a routerLink="/register" class="btn btn-link">Register</a>
+    </div>
+</form>
+-->

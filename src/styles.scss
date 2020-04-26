@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding:0;
+    box-sizing:inherit;
+}
+
+html{
+    box-sizing:border-box;
+    font-size: 62.5%; //10px/16px = 62.5% -> 1 rem = 10px   
+    
+    @media only screen and (max-width: 75em) {
+        font-size: 50%;
+    }
+}
+
+body{
+    background-color: rgb(245, 22, 134);
+}
+.success {
+    color:rgb(94, 241, 94);
+}
+
+.warn {
+    color: rgba(245, 28, 13, 0.829);
+}
