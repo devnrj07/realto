@@ -18,7 +18,8 @@ export class UserListComponent implements OnInit {
   color = 'warn'
   diameter = 30;
   width = 5;
-  
+  selected = "1";
+
 
   constructor(
     private router: Router,
@@ -34,12 +35,13 @@ export class UserListComponent implements OnInit {
     this.loadUser();
   }
 
-  loadUser() {
+
+  loadUser(page_no = "1") {
     this.loading = true;
-    return this.userService.getAllUsers()
+    return this.userService.getAllUsers(page_no)
       .pipe(first())
       .subscribe(users => {
-        console.log("data", users);
+        console.log("data", this.selected);
         this.users = users
         this.loading = false;
         this.notification.notify('user list loaded')
@@ -48,6 +50,11 @@ export class UserListComponent implements OnInit {
         this.loading = false;
         this.notification.alert('failed to load user list')
       });
+  }
+
+  getUpdatedList() {
+    console.log("selected", this.selected);
+    this.loadUser(this.selected);
   }
 
   exit() {

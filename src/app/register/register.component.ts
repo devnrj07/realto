@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   color = 'warn'
   diameter = 30;
   width = 5;
-  
+
 
   maxDate: Date;
   minDate: Date;
@@ -74,12 +74,12 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.userService.registerUser(this.registerForm.value)
-       .pipe(first())
-       .subscribe(data => {
-          console.log(data);
-          this.notificationService.notify('Registration successful');
-          this.router.navigate(['login']);
-        },
+      .pipe(first())
+      .subscribe(data => {
+        console.log(data);
+        this.notificationService.notify('Registration successful');
+        this.router.navigate(['login']);
+      },
         error => {
           console.log(error)
           this.notificationService.alert('Registration failed');

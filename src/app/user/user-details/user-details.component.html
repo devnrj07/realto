@@ -1,21 +1,29 @@
 <mat-card class="card">
     <mat-card-header>
-      <img src ="avatar" mat-card-avatar class="header-image" alt="avatar">
-      <mat-card-title>{{name | uppercase}},</mat-card-title>
-      <mat-card-subtitle>{{dob|getAge}}</mat-card-subtitle>
+        <img src="avatar" mat-card-avatar class="header-image" alt="avatar">
+        <mat-card-title>{{name | uppercase}},</mat-card-title>
+        <mat-card-subtitle>{{dob|getAge}}</mat-card-subtitle>
     </mat-card-header>
-    
+
     <mat-card-content>
-        <mat-card-subtitle> <mat-icon>mail_outline</mat-icon> {{email}}</mat-card-subtitle>
-        <mat-card-subtitle> <mat-icon>language</mat-icon>  {{country}}</mat-card-subtitle>
-        
+        <mat-card-subtitle>
+            <mat-icon>mail_outline</mat-icon> {{email}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+            <mat-icon>language</mat-icon> {{country}}
+        </mat-card-subtitle>
+
     </mat-card-content>
     <mat-card-actions>
-        <button mat-fab (click)="openModal()" color="primary"><mat-icon>edit</mat-icon></button>
-        <button mat-fab (click)="display()" color="warn"><mat-icon>delete</mat-icon></button>
-      </mat-card-actions>
-  </mat-card>
-  
+        <button mat-fab (click)="openModal()" color="primary">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-fab (click)="display()" color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
+
 
 
 

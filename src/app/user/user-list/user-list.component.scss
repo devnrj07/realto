@@ -3,21 +3,23 @@
 $stagger-delay : 100ms;
 
 .container{
- min-height:10rem;   
+  margin-top : 5rem; 
  display: flex;
  flex-direction: column;
  align-items: center;
- justify-content: space-evenly;   
+ justify-content: space-evenly;  
 }
 
 h1{
   font-family: $font-display;
   color: rgb(240, 240, 240);
+  font-size: 2.5rem;
 }
 
 h3{
   font-family: $font-display;
   color: rgb(245, 244, 244);
+  font-size: 2rem;
 }
 .mat-toolbar{
   display: flex;
@@ -25,13 +27,13 @@ h3{
 }
 
 .cards-container{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   display: grid;
   grid-template-areas:
     'a  b  c  d'
-    'l  m  n  e'
-    'k  p  o  f'
-    'j  i  h  g';
-    gap: 1rem;
+    'l  m  n  e';
+  gap: 1rem;
 }
 
 .cards{
@@ -40,7 +42,17 @@ h3{
   animation-fill-mode: backwards;
 }
 
+.mat-select{
+  width: 3rem;
+  height: 2rem;
+  background-color: white;
+  text-align: center;
+}
+.mat-form-field{
+  width:3rem;
+  
 
+}
 @keyframes cardEntrance {
   from {
     opacity: 0;

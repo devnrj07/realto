@@ -18,7 +18,7 @@ export class UserDetailsService {
       'Authorization': jwtToken });
    }
 
-  getAllUsers(page:String = '1',per_page:String = '10'){
+  getAllUsers(page:String = '1',per_page:String = '8'){
     
     return this.http.get<User[]>(this.url+`?page=${page}&per_page=${per_page}`, {headers:this.headers});
   }

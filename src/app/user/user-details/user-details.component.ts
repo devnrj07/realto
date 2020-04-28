@@ -32,7 +32,7 @@ export class UserDetailsComponent implements OnInit {
       email: this.email,
       avatar: this.avatar,
       country: this.country,
-   }
+    }
     const outputRef = this.matDialog.open(EditUserDetailsComponent, dialogConfig)
 
 
