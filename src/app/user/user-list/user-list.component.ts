@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
 
   loadUser(page_no = "1") {
     this.loading = true;
-    return this.userService.getAllUsers(page_no)
+    return this.userService.getUsersList(page_no)
       .pipe(first())
       .subscribe(users => {
         console.log("data", this.selected);
@@ -54,6 +54,7 @@ export class UserListComponent implements OnInit {
 
   getUpdatedList() {
     console.log("selected", this.selected);
+    this.userService.clearCache();
     this.loadUser(this.selected);
   }
 

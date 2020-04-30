@@ -2,6 +2,19 @@
 
 Super simple Angular app with 1 module and 1 routes. This is a take home task by `kinetics` which is built using angular`v8`. It has both kinds of forms, routing, parent-child components and Observable service pattern. Angular material is been used for styling.  
 
+# Highlights 
+- <b>Retry Strategy on error </b>: using <b>RxJs</b> `retryWhen` and `concatMap`, we can easily try of a HTTP call again n times with `take` operator. Here, <u>user-list</u> components loads a list of registered user and incase the call fails, it tries again for 3 times before, displayig error message finally to user.
+
+- <b>Lazy Caching </b>: while there are various strategies for caching on client side like `localstorgae` , `arrays` etc... I'm leveraging two operators namely `publishReplay` and `refCounf` from a wonderful <b>RxJs</b> library. 
+  - <b>PublishReplay operator</b> : The publishReplay() operator turns a cold observable to a hot observable by    multi-casting the values. It creates a new Subject of type ReplaySubject(). The argument we pass determines the current index of the value we want to replay.
+  - <b>refCount operator</b>  : refCount() keeps track of all subscribers so that it can unsubscribe from the original source when all the subscribers are gone.
+
+- So, the logic is simple, check global `$cache` variable, if it exists serve the value from the variable(Subject) or if it doesn't (which is first the application loads) hit the server and save the response.
+- A second `clearCache` method is used to clear `cache` variable and hence, the variable now gets updated on next call.
+- Alternative we can use `timer` and `delay` to do polling and get updated response from the serve periodically.
+
+- Ideally , an event or push notification from server should imitate about the change in response data, only then we should update our cache.
+
 ## Get the Code
 ```
 git clone https://github.com/devnrj07/realto.git myapp
